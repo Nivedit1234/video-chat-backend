@@ -3,9 +3,9 @@ const http = require('http');
 const app = express();
 require('dotenv').config();
 const server = http.createServer(app);
-//const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 Frontend_URL = process.env.Frontend_URL;
-//console.log(Frontend_URL);
+
 const io = require('socket.io')(server, {
   cors: {
     origin: `${Frontend_URL}`,
@@ -34,4 +34,4 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(5000, () => console.log(`server is running on port 5000 `));
+server.listen(PORT, () => console.log(`server is running on port ${PORT} `));
